@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="generator" content="Hugo 0.72.0" />
-  <link rel="canonical" href="https://priolix.github.io/posts/benchmark-google-lb/">
+  <link rel="canonical" href="https://blog.prioli.xyz/posts/benchmark-google-lb/">
 
   
 
@@ -18,11 +18,11 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="theme-color" content="#ffffff">
 
-  <link rel="stylesheet" href="https://priolix.github.io/css/prism.css" media="none" onload="this.media='all';">
+  <link rel="stylesheet" href="https://blog.prioli.xyz/css/prism.css" media="none" onload="this.media='all';">
 
   
   
-  <link rel="stylesheet" type="text/css" href="https://priolix.github.io/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.prioli.xyz/css/styles.css">
 
   
 
@@ -134,10 +134,10 @@
     <div class="intro">
       <a
         class="logo"
-        href="https://priolix.github.io/"
+        href="https://blog.prioli.xyz/"
         aria-label="Prioli.xyz home page"
       >
-        <img src="https://priolix.github.io/images/photo.jpg" alt="">
+        <img src="https://blog.prioli.xyz/images/photo.jpg" alt="">
       </a>
       <p class="library-desc">
          <a href="https://www.linkedin.com/in/adrien-le-priol/">LinkedIn</a> <a href="https://github.com/priolix">GitHub</a> <a href="https://twitter.com/Priolix">Twitter</a> <a href="/files/ALP-Resume.pdf">C.V.</a> 
@@ -203,8 +203,8 @@
 
 
 <figure role="group" aria-describedby="caption-d41d8cd98f00b204e9800998ecf8427e">
-  <a href="https://priolix.github.io/posts/benchmark-google-lb/header.png" class="img-link">
-    <img src="https://priolix.github.io/posts/benchmark-google-lb/header_hua020af5e4ef289b1f187d1b324d207ed_17292_400x0_resize_box_2.png">
+  <a href="https://blog.prioli.xyz/posts/benchmark-google-lb/header.png" class="img-link">
+    <img src="https://blog.prioli.xyz/posts/benchmark-google-lb/header_hua020af5e4ef289b1f187d1b324d207ed_17292_400x0_resize_box_2.png">
   </a>
   <figcaption id="caption-d41d8cd98f00b204e9800998ecf8427e">
     
@@ -228,8 +228,8 @@ The documentation is pretty clear <a href="https://cloud.google.com/network-tier
 
 
 <figure role="group" aria-describedby="caption-d41d8cd98f00b204e9800998ecf8427e">
-  <a href="https://priolix.github.io/posts/benchmark-google-lb/architecture.png" class="img-link">
-    <img src="https://priolix.github.io/posts/benchmark-google-lb/architecture_hud7097582e8b322b398c7b6a36dd246c5_27441_650x0_resize_box_2.png">
+  <a href="https://blog.prioli.xyz/posts/benchmark-google-lb/architecture.png" class="img-link">
+    <img src="https://blog.prioli.xyz/posts/benchmark-google-lb/architecture_hud7097582e8b322b398c7b6a36dd246c5_27441_650x0_resize_box_2.png">
   </a>
   <figcaption id="caption-d41d8cd98f00b204e9800998ecf8427e">
     
@@ -245,7 +245,7 @@ The documentation is pretty clear <a href="https://cloud.google.com/network-tier
     
     
     
-    <button aria-expanded="false" data-expands="js-expandable-598b02308498f909905341fad331b13f">
+    <button aria-expanded="false" data-expands="js-expandable-951d3f049835942909b310f31a38b08f">
       <span class="expandable-label">03-lb.tf</span>
       <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
         <g transform="translate(0 -981.5)">
@@ -257,7 +257,7 @@ The documentation is pretty clear <a href="https://cloud.google.com/network-tier
   
     </h2>
   
-  <div id="js-expandable-598b02308498f909905341fad331b13f" hidden>
+  <div id="js-expandable-951d3f049835942909b310f31a38b08f" hidden>
     <pre><code class="language-json">resource &quot;google_compute_backend_bucket&quot; &quot;hugo&quot; {
   name        = replace(&quot;${var.domain_name}&quot;, &quot;.&quot;, &quot;&quot;)
   bucket_name = google_storage_bucket.hugo.name
@@ -339,7 +339,7 @@ resource &quot;google_compute_managed_ssl_certificate&quot; &quot;hugo&quot; {
     
     
     
-    <button aria-expanded="false" data-expands="js-expandable-292ab7c0a9a81662410bbea84365afc1">
+    <button aria-expanded="false" data-expands="js-expandable-ea71b8a601959a2b68216cb420aacf43">
       <span class="expandable-label">03-lb-premium.tf</span>
       <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
         <g transform="translate(0 -981.5)">
@@ -351,7 +351,7 @@ resource &quot;google_compute_managed_ssl_certificate&quot; &quot;hugo&quot; {
   
     </h2>
   
-  <div id="js-expandable-292ab7c0a9a81662410bbea84365afc1" hidden>
+  <div id="js-expandable-ea71b8a601959a2b68216cb420aacf43" hidden>
     <pre><code class="language-json">resource &quot;google_compute_backend_bucket&quot; &quot;hugo_premium&quot; {
   name        = &quot;${replace(&quot;${var.domain_name}&quot;, &quot;.&quot;, &quot;&quot;)}premium&quot;
   bucket_name = google_storage_bucket.hugo.name
@@ -427,8 +427,8 @@ I&rsquo;m gonna experience with several method to observe, analyse, and test the
 
 
 <figure role="group" aria-describedby="caption-985b8ec9cecc41bc3d2eaddabcf7151f">
-  <a href="https://priolix.github.io/posts/benchmark-google-lb/traceroute-spectrum-la.png" class="img-link">
-    <img src="https://priolix.github.io/posts/benchmark-google-lb/traceroute-spectrum-la_hu424ee625bb0baec8de54e1f7f0b8985d_129217_900x0_resize_box_2.png">
+  <a href="https://blog.prioli.xyz/posts/benchmark-google-lb/traceroute-spectrum-la.png" class="img-link">
+    <img src="https://blog.prioli.xyz/posts/benchmark-google-lb/traceroute-spectrum-la_hu424ee625bb0baec8de54e1f7f0b8985d_129217_900x0_resize_box_2.png">
   </a>
   <figcaption id="caption-985b8ec9cecc41bc3d2eaddabcf7151f">
     Click to enlarge
@@ -449,8 +449,8 @@ I&rsquo;m gonna experience with several method to observe, analyse, and test the
 
 
 <figure role="group" aria-describedby="caption-985b8ec9cecc41bc3d2eaddabcf7151f">
-  <a href="https://priolix.github.io/posts/benchmark-google-lb/traceroute-orange.png" class="img-link">
-    <img src="https://priolix.github.io/posts/benchmark-google-lb/traceroute-orange_hucecf59c9cce9978dfa316103aeb3b40f_186088_900x0_resize_box_2.png">
+  <a href="https://blog.prioli.xyz/posts/benchmark-google-lb/traceroute-orange.png" class="img-link">
+    <img src="https://blog.prioli.xyz/posts/benchmark-google-lb/traceroute-orange_hucecf59c9cce9978dfa316103aeb3b40f_186088_900x0_resize_box_2.png">
   </a>
   <figcaption id="caption-985b8ec9cecc41bc3d2eaddabcf7151f">
     Click to enlarge
@@ -471,8 +471,8 @@ I&rsquo;m gonna experience with several method to observe, analyse, and test the
 
 
 <figure role="group" aria-describedby="caption-985b8ec9cecc41bc3d2eaddabcf7151f">
-  <a href="https://priolix.github.io/posts/benchmark-google-lb/traceroute-ovh.png" class="img-link">
-    <img src="https://priolix.github.io/posts/benchmark-google-lb/traceroute-ovh_hu43176b128389b9c3b67a159034abc480_141475_900x0_resize_box_2.png">
+  <a href="https://blog.prioli.xyz/posts/benchmark-google-lb/traceroute-ovh.png" class="img-link">
+    <img src="https://blog.prioli.xyz/posts/benchmark-google-lb/traceroute-ovh_hu43176b128389b9c3b67a159034abc480_141475_900x0_resize_box_2.png">
   </a>
   <figcaption id="caption-985b8ec9cecc41bc3d2eaddabcf7151f">
     Click to enlarge
@@ -517,8 +517,8 @@ sys     0m0.008s                        │sys     0m0.000s
 
 
 <figure role="group" aria-describedby="caption-94e94133f4bdc1794c6b647b8ea134d0">
-  <a href="https://priolix.github.io/posts/benchmark-google-lb/gtmetrix-standard.png" class="img-link">
-    <img src="https://priolix.github.io/posts/benchmark-google-lb/gtmetrix-standard_hue05f16af498f00b9d4e49242943e48e5_50476_800x0_resize_box_2.png">
+  <a href="https://blog.prioli.xyz/posts/benchmark-google-lb/gtmetrix-standard.png" class="img-link">
+    <img src="https://blog.prioli.xyz/posts/benchmark-google-lb/gtmetrix-standard_hue05f16af498f00b9d4e49242943e48e5_50476_800x0_resize_box_2.png">
   </a>
   <figcaption id="caption-94e94133f4bdc1794c6b647b8ea134d0">
     STANDARD
@@ -538,8 +538,8 @@ sys     0m0.008s                        │sys     0m0.000s
 
 
 <figure role="group" aria-describedby="caption-7c7c704d16a864767fedcd9c7116957e">
-  <a href="https://priolix.github.io/posts/benchmark-google-lb/gtmetrix-standard.png" class="img-link">
-    <img src="https://priolix.github.io/posts/benchmark-google-lb/gtmetrix-standard_hue05f16af498f00b9d4e49242943e48e5_50476_800x0_resize_box_2.png">
+  <a href="https://blog.prioli.xyz/posts/benchmark-google-lb/gtmetrix-standard.png" class="img-link">
+    <img src="https://blog.prioli.xyz/posts/benchmark-google-lb/gtmetrix-standard_hue05f16af498f00b9d4e49242943e48e5_50476_800x0_resize_box_2.png">
   </a>
   <figcaption id="caption-7c7c704d16a864767fedcd9c7116957e">
     PREMIUM
@@ -560,8 +560,8 @@ The Page Speed Score and YSlow is very similar like also the Fully Loaded Time.
 
 
 <figure role="group" aria-describedby="caption-94e94133f4bdc1794c6b647b8ea134d0">
-  <a href="https://priolix.github.io/posts/benchmark-google-lb/webpagetest-standard.png" class="img-link">
-    <img src="https://priolix.github.io/posts/benchmark-google-lb/webpagetest-standard_hu28b97670d13153a42c4f53542c41524e_94499_800x0_resize_box_2.png">
+  <a href="https://blog.prioli.xyz/posts/benchmark-google-lb/webpagetest-standard.png" class="img-link">
+    <img src="https://blog.prioli.xyz/posts/benchmark-google-lb/webpagetest-standard_hu28b97670d13153a42c4f53542c41524e_94499_800x0_resize_box_2.png">
   </a>
   <figcaption id="caption-94e94133f4bdc1794c6b647b8ea134d0">
     STANDARD
@@ -581,8 +581,8 @@ The Page Speed Score and YSlow is very similar like also the Fully Loaded Time.
 
 
 <figure role="group" aria-describedby="caption-7c7c704d16a864767fedcd9c7116957e">
-  <a href="https://priolix.github.io/posts/benchmark-google-lb/webpagetest-premium.png" class="img-link">
-    <img src="https://priolix.github.io/posts/benchmark-google-lb/webpagetest-premium_hu198f59dcea154a145b595fa91e577931_100461_800x0_resize_box_2.png">
+  <a href="https://blog.prioli.xyz/posts/benchmark-google-lb/webpagetest-premium.png" class="img-link">
+    <img src="https://blog.prioli.xyz/posts/benchmark-google-lb/webpagetest-premium_hu198f59dcea154a145b595fa91e577931_100461_800x0_resize_box_2.png">
   </a>
   <figcaption id="caption-7c7c704d16a864767fedcd9c7116957e">
     PREMIUM
@@ -610,8 +610,8 @@ And here is the result:</p>
 
 
 <figure role="group" aria-describedby="caption-94e94133f4bdc1794c6b647b8ea134d0">
-  <a href="https://priolix.github.io/posts/benchmark-google-lb/gatling-standard-result.png" class="img-link">
-    <img src="https://priolix.github.io/posts/benchmark-google-lb/gatling-standard-result_hu3fdd326ba07f3f443de3247f483a4166_171920_800x0_resize_box_2.png">
+  <a href="https://blog.prioli.xyz/posts/benchmark-google-lb/gatling-standard-result.png" class="img-link">
+    <img src="https://blog.prioli.xyz/posts/benchmark-google-lb/gatling-standard-result_hu3fdd326ba07f3f443de3247f483a4166_171920_800x0_resize_box_2.png">
   </a>
   <figcaption id="caption-94e94133f4bdc1794c6b647b8ea134d0">
     STANDARD
@@ -631,8 +631,8 @@ And here is the result:</p>
 
 
 <figure role="group" aria-describedby="caption-94e94133f4bdc1794c6b647b8ea134d0">
-  <a href="https://priolix.github.io/posts/benchmark-google-lb/gatling-standard-responsetime.png" class="img-link">
-    <img src="https://priolix.github.io/posts/benchmark-google-lb/gatling-standard-responsetime_hu80a77a8970f9d8ec2a323d4e7c6fa78d_110420_800x0_resize_box_2.png">
+  <a href="https://blog.prioli.xyz/posts/benchmark-google-lb/gatling-standard-responsetime.png" class="img-link">
+    <img src="https://blog.prioli.xyz/posts/benchmark-google-lb/gatling-standard-responsetime_hu80a77a8970f9d8ec2a323d4e7c6fa78d_110420_800x0_resize_box_2.png">
   </a>
   <figcaption id="caption-94e94133f4bdc1794c6b647b8ea134d0">
     STANDARD
@@ -653,8 +653,8 @@ And here is the result:</p>
 
 
 <figure role="group" aria-describedby="caption-7c7c704d16a864767fedcd9c7116957e">
-  <a href="https://priolix.github.io/posts/benchmark-google-lb/gatling-premum-result.png" class="img-link">
-    <img src="https://priolix.github.io/posts/benchmark-google-lb/gatling-premum-result_hu59006d4216ced3e37c8e3e0d6cf16f1e_163337_800x0_resize_box_2.png">
+  <a href="https://blog.prioli.xyz/posts/benchmark-google-lb/gatling-premum-result.png" class="img-link">
+    <img src="https://blog.prioli.xyz/posts/benchmark-google-lb/gatling-premum-result_hu59006d4216ced3e37c8e3e0d6cf16f1e_163337_800x0_resize_box_2.png">
   </a>
   <figcaption id="caption-7c7c704d16a864767fedcd9c7116957e">
     PREMIUM
@@ -674,8 +674,8 @@ And here is the result:</p>
 
 
 <figure role="group" aria-describedby="caption-7c7c704d16a864767fedcd9c7116957e">
-  <a href="https://priolix.github.io/posts/benchmark-google-lb/gatling-premium-responsetime.png" class="img-link">
-    <img src="https://priolix.github.io/posts/benchmark-google-lb/gatling-premium-responsetime_hue7e7dc90a596e0afc642f06ae5eae26b_86095_800x0_resize_box_2.png">
+  <a href="https://blog.prioli.xyz/posts/benchmark-google-lb/gatling-premium-responsetime.png" class="img-link">
+    <img src="https://blog.prioli.xyz/posts/benchmark-google-lb/gatling-premium-responsetime_hue7e7dc90a596e0afc642f06ae5eae26b_86095_800x0_resize_box_2.png">
   </a>
   <figcaption id="caption-7c7c704d16a864767fedcd9c7116957e">
     PREMIUM
@@ -702,8 +702,8 @@ The price is also quite expensive, it&rsquo;s been more than a month I&rsquo;m u
 
 
 <figure role="group" aria-describedby="caption-d41d8cd98f00b204e9800998ecf8427e">
-  <a href="https://priolix.github.io/posts/benchmark-google-lb/cost.png" class="img-link">
-    <img src="https://priolix.github.io/posts/benchmark-google-lb/cost_hub3a95740a36013bf566f40764ff1a98c_18773_900x0_resize_box_2.png">
+  <a href="https://blog.prioli.xyz/posts/benchmark-google-lb/cost.png" class="img-link">
+    <img src="https://blog.prioli.xyz/posts/benchmark-google-lb/cost_hub3a95740a36013bf566f40764ff1a98c_18773_900x0_resize_box_2.png">
   </a>
   <figcaption id="caption-d41d8cd98f00b204e9800998ecf8427e">
     
@@ -730,11 +730,11 @@ I&rsquo;m really thinking to migrate the blog to AWS and maybe do the same kind 
         </div>
       </div>
     </div>
-    <script src="https://priolix.github.io/js/prism.js"></script>
+    <script src="https://blog.prioli.xyz/js/prism.js"></script>
 
 
 
-<script src="https://priolix.github.io/js/dom-scripts.js"></script>
+<script src="https://blog.prioli.xyz/js/dom-scripts.js"></script>
 
 
 

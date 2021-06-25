@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Prioli.xyz</title>
-    <link>https://priolix.github.io/posts/</link>
+    <link>https://blog.prioli.xyz/posts/</link>
     <description>Recent content in Posts on Prioli.xyz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 25 Oct 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://priolix.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.prioli.xyz/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Gatling Load Testing #2</title>
-      <link>https://priolix.github.io/posts/gatling-load-testing-2/</link>
+      <link>https://blog.prioli.xyz/posts/gatling-load-testing-2/</link>
       <pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://priolix.github.io/posts/gatling-load-testing-2/</guid>
+      <guid>https://blog.prioli.xyz/posts/gatling-load-testing-2/</guid>
       <description>    </description>
     </item>
     
     <item>
       <title>Benchmark Google Load Balancer</title>
-      <link>https://priolix.github.io/posts/benchmark-google-lb/</link>
+      <link>https://blog.prioli.xyz/posts/benchmark-google-lb/</link>
       <pubDate>Fri, 28 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://priolix.github.io/posts/benchmark-google-lb/</guid>
+      <guid>https://blog.prioli.xyz/posts/benchmark-google-lb/</guid>
       <description>When you configure a public loadbalancer at Google Cloud you provide 2 solutions, STANDARD and PREMIUM.
 The documentation is pretty clear HERE
 Intro For doing this benchmark, I setup 2 Network Service Tier, one standard and another one premium.
@@ -34,20 +34,20 @@ Intro For doing this benchmark, I setup 2 Network Service Tier, one standard and
     
     <item>
       <title>Gatling Load Testing #1</title>
-      <link>https://priolix.github.io/posts/gatling-load-testing-1/</link>
+      <link>https://blog.prioli.xyz/posts/gatling-load-testing-1/</link>
       <pubDate>Thu, 13 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://priolix.github.io/posts/gatling-load-testing-1/</guid>
+      <guid>https://blog.prioli.xyz/posts/gatling-load-testing-1/</guid>
       <description>Gatling is an open-source load- and performance-testing framework based on Scala, Akka and Netty. The first stable release was published on January 13, 2012. In 2015, Gatling&amp;rsquo;s founder, Stéphane Landelle, created a company dedicated to the development of the open-source project.
 The software is designed to be used as a load testing tool for analyzing and measuring the performance of a variety of services, with a focus on web applications.</description>
     </item>
     
     <item>
       <title>Hugo on cloud storage</title>
-      <link>https://priolix.github.io/posts/hugo-on-cloud-storage/</link>
+      <link>https://blog.prioli.xyz/posts/hugo-on-cloud-storage/</link>
       <pubDate>Mon, 22 Jun 2020 19:03:06 -0700</pubDate>
       
-      <guid>https://priolix.github.io/posts/hugo-on-cloud-storage/</guid>
+      <guid>https://blog.prioli.xyz/posts/hugo-on-cloud-storage/</guid>
       <description>Here we are ! This is first article of my new blog, and as every new tech blog, I have to explain why and how this blog is configured. Since 2015, I started to use public cloud, specially AWS, for work, and I loved it ! Very quickly after, I started to learn and use Terraform. This kind of tool that make you fall in love with public cloud, automation, and DevOps philosophy.</description>
     </item>
     
