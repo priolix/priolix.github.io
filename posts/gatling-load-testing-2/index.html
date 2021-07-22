@@ -233,7 +233,7 @@ After recording we can generate a file that looks like this:
     
     
     
-    <button aria-expanded="false" data-expands="js-expandable-76fd8743b32acc53402a786df117f58f">
+    <button aria-expanded="false" data-expands="js-expandable-7f2cc27a0483ff1f8b184d6d7356573a">
       <span class="expandable-label">Scenario1.scala</span>
       <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
         <g transform="translate(0 -981.5)">
@@ -245,7 +245,7 @@ After recording we can generate a file that looks like this:
   
     </h2>
   
-  <div id="js-expandable-76fd8743b32acc53402a786df117f58f" hidden>
+  <div id="js-expandable-7f2cc27a0483ff1f8b184d6d7356573a" hidden>
     <pre><code class="language-scala">package priolix
 
 import scala.concurrent.duration._
@@ -433,7 +433,7 @@ We can parse the previous page and store the parameter into a variable like that
     
     
     
-    <button aria-expanded="false" data-expands="js-expandable-501ccb4cb5f6e656dba6d4939b9cfe14">
+    <button aria-expanded="false" data-expands="js-expandable-9e06d5e43f4ba6455cbbb1d9fc6cc916">
       <span class="expandable-label">Scenario1.scala</span>
       <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
         <g transform="translate(0 -981.5)">
@@ -445,7 +445,7 @@ We can parse the previous page and store the parameter into a variable like that
   
     </h2>
   
-  <div id="js-expandable-501ccb4cb5f6e656dba6d4939b9cfe14" hidden>
+  <div id="js-expandable-9e06d5e43f4ba6455cbbb1d9fc6cc916" hidden>
     <pre><code class="language-scala">package priolix
 
 import scala.concurrent.duration._
@@ -597,8 +597,8 @@ class Scenario1 extends Simulation {
 </div>
 </p>
 <h1 id="debug">Debug</h1>
-<p>In this section we gonna see how to analysein order to understand how the website works.
-The main goal is to find were parameters and variables are set in order to reuse it.</p>
+<p>In this section we gonna see differents methods to analyse how the website works.
+The goal is to find where the differents parameters and variables are set by the website in order to reuse it dynamically.</p>
 <h3 id="gatling-debuging">Gatling debuging</h3>
 <p><strong>/opt/gatling/conf/logback.xml</strong></p>
 <pre><code>&lt;!-- uncomment and set to TRACE to log all HTTP requests --&gt;
@@ -611,8 +611,8 @@ The main goal is to find were parameters and variables are set in order to reuse
 &lt;!--&lt;logger name=&quot;io.gatling.http.action.sse.fsm&quot; level=&quot;DEBUG&quot; /&gt;--&gt;
 </code></pre>
 <h3 id="network-debuging">Network debuging</h3>
-<p>If we have access to the target server and this server is behind a HTTPs proxy we can use TCPDump on it to extract sone informations.
-That can help us to find where some parameters a set and to extract them to reuse it.</p>
+<p>If we have access to the target server and this server is behind a HTTPs proxy we can use TCPDump on it to extract some informations.
+That can help us to find where some parameters are set and to extract them to reuse it.</p>
 <pre><code>tcpdump -i any -n -v -A port 80
 </code></pre>
 <p>We can also use tools like reverse proxy HTTP(s) such as :</p>
@@ -644,7 +644,7 @@ That can help us to find where some parameters a set and to extract them to reus
 </figure>
 </p>
 <h1 id="merge-from-multiple-sources">Merge from multiple sources</h1>
-<p>When we launch gatling from multiple source in order to load balance the work between the injetors we might need to merge all the results into one report.
+<p>When we launch Gatling from multiple source in order to load balance the work between the injetors we might need to merge all the results into one report.
 This is how we proceed.
 Copy files from injector 1 and 2 in a same directory</p>
 <pre><code>/opt/gatling/results/merged1/# ls -lah
