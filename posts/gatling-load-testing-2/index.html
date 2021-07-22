@@ -212,8 +212,455 @@
 </figure>
 
 <h1 id="intro">Intro</h1>
-<p>In this blog post we gonna go a litlle bit futher that we went on the previous blog post on Gatling. This is why I hightly recomment you having a look on the first gatling blog post.</p>
-<h1 id="coming-soon">Coming soon</h1>
+<p>In this blog post we gonna go a litlle bit futher that we went on the previous blog post on Gatling. This is why I hightly recomment you having a read on the <a href="https://blog.prioli.xyz/posts/gatling-load-testing-1/">first gatling blog post.</a></p>
+<p>For this article we gonna use the JPetStore from <a href="https://octoperf.com/">octoperf</a> : <a href="https://petstore.octoperf.com/">https://petstore.octoperf.com/</a></p>
+<p>And we gonna create a simple scenario that :</p>
+<ol>
+<li>Login (with a previously created account)</li>
+<li>Browse some items</li>
+<li>Add some items to cart</li>
+<li>Place order</li>
+</ol>
+<h1 id="record-your-scenario">Record your scenario</h1>
+<p>We are using the recording method that we explained in the previous <a href="https://blog.prioli.xyz/posts/gatling-load-testing-1/">blog post</a>
+After recording we can generate a file that looks like this:
+<div class="expandable-section">
+  
+    <h2>
+  
+    
+    
+    
+    
+    
+    <button aria-expanded="false" data-expands="js-expandable-76fd8743b32acc53402a786df117f58f">
+      <span class="expandable-label">Scenario1.scala</span>
+      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
+        <g transform="translate(0 -981.5)">
+          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
+          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
+        </g>
+      </svg>
+    </button>
+  
+    </h2>
+  
+  <div id="js-expandable-76fd8743b32acc53402a786df117f58f" hidden>
+    <pre><code class="language-scala">package priolix
+
+import scala.concurrent.duration._
+
+import io.gatling.core.Predef._
+import io.gatling.http.Predef._
+import io.gatling.jdbc.Predef._
+
+class Scenario1 extends Simulation {
+
+	val httpProtocol = http
+		.baseUrl(&quot;https://petstore.octoperf.com&quot;)
+		.inferHtmlResources(BlackList(&quot;&quot;&quot;.*\.js&quot;&quot;&quot;, &quot;&quot;&quot;.*\.css&quot;&quot;&quot;, &quot;&quot;&quot;.*\.gif&quot;&quot;&quot;, &quot;&quot;&quot;.*\.jpeg&quot;&quot;&quot;, &quot;&quot;&quot;.*\.jpg&quot;&quot;&quot;, &quot;&quot;&quot;.*\.ico&quot;&quot;&quot;, &quot;&quot;&quot;.*\.woff&quot;&quot;&quot;, &quot;&quot;&quot;.*\.woff2&quot;&quot;&quot;, &quot;&quot;&quot;.*\.(t|o)tf&quot;&quot;&quot;, &quot;&quot;&quot;.*\.png&quot;&quot;&quot;, &quot;&quot;&quot;.*detectportal\.firefox\.com.*&quot;&quot;&quot;), WhiteList())
+		.acceptHeader(&quot;text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9&quot;)
+		.acceptEncodingHeader(&quot;gzip, deflate&quot;)
+		.acceptLanguageHeader(&quot;en-US,en;q=0.9&quot;)
+		.upgradeInsecureRequestsHeader(&quot;1&quot;)
+		.userAgentHeader(&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.101 Safari/537.36&quot;)
+
+	val headers_0 = Map(
+		&quot;pragma&quot; -&gt; &quot;no-cache&quot;,
+		&quot;sec-ch-ua&quot; -&gt; &quot;&quot;&quot;Chromium&quot;;v=&quot;91&quot;, &quot; Not;A Brand&quot;;v=&quot;99&quot;&quot;&quot;,
+		&quot;sec-ch-ua-mobile&quot; -&gt; &quot;?0&quot;,
+		&quot;sec-fetch-dest&quot; -&gt; &quot;document&quot;,
+		&quot;sec-fetch-mode&quot; -&gt; &quot;navigate&quot;,
+		&quot;sec-fetch-site&quot; -&gt; &quot;none&quot;,
+		&quot;sec-fetch-user&quot; -&gt; &quot;?1&quot;)
+
+	val headers_1 = Map(
+		&quot;pragma&quot; -&gt; &quot;no-cache&quot;,
+		&quot;sec-ch-ua&quot; -&gt; &quot;&quot;&quot;Chromium&quot;;v=&quot;91&quot;, &quot; Not;A Brand&quot;;v=&quot;99&quot;&quot;&quot;,
+		&quot;sec-ch-ua-mobile&quot; -&gt; &quot;?0&quot;,
+		&quot;sec-fetch-dest&quot; -&gt; &quot;document&quot;,
+		&quot;sec-fetch-mode&quot; -&gt; &quot;navigate&quot;,
+		&quot;sec-fetch-site&quot; -&gt; &quot;same-origin&quot;,
+		&quot;sec-fetch-user&quot; -&gt; &quot;?1&quot;)
+
+	val headers_3 = Map(
+		&quot;origin&quot; -&gt; &quot;https://petstore.octoperf.com&quot;,
+		&quot;pragma&quot; -&gt; &quot;no-cache&quot;,
+		&quot;sec-ch-ua&quot; -&gt; &quot;&quot;&quot;Chromium&quot;;v=&quot;91&quot;, &quot; Not;A Brand&quot;;v=&quot;99&quot;&quot;&quot;,
+		&quot;sec-ch-ua-mobile&quot; -&gt; &quot;?0&quot;,
+		&quot;sec-fetch-dest&quot; -&gt; &quot;document&quot;,
+		&quot;sec-fetch-mode&quot; -&gt; &quot;navigate&quot;,
+		&quot;sec-fetch-site&quot; -&gt; &quot;same-origin&quot;,
+		&quot;sec-fetch-user&quot; -&gt; &quot;?1&quot;)
+
+
+
+	val scn = scenario(&quot;Scenario1&quot;)
+		.exec(http(&quot;request_0&quot;)
+			.get(&quot;/&quot;)
+			.headers(headers_0))
+		.pause(2)
+		.exec(http(&quot;request_1&quot;)
+			.get(&quot;/actions/Catalog.action&quot;)
+			.headers(headers_1))
+		.pause(3)
+		.exec(http(&quot;request_2&quot;)
+			.get(&quot;/actions/Account.action;jsessionid=6D5E6EF2EFBE77CC3EAB7DFCA53D3726?signonForm=&quot;)
+			.headers(headers_1))
+		.pause(6)
+		.exec(http(&quot;request_3&quot;)
+			.post(&quot;/actions/Account.action&quot;)
+			.headers(headers_3)
+			.formParam(&quot;username&quot;, &quot;priolix&quot;)
+			.formParam(&quot;password&quot;, &quot;qwerty&quot;)
+			.formParam(&quot;signon&quot;, &quot;Login&quot;)
+			.formParam(&quot;_sourcePage&quot;, &quot;V5VUaHjz2gsPgTRtw2vLQ2EjQT_DK1EM6AEQPaTu4vgqfhO7PKwpPyQZGN_7GvyL48-UITYMygV-E-uqoF5Q6p_auRR7IurLk_hgKxRD5hI=&quot;)
+			.formParam(&quot;__fp&quot;, &quot;knMJ5sRUcFhvDut0kVxALcuyYld3Ul39yNAwRZE9Lg5FSVGg0LJ7v8D3STtJ4Qli&quot;))
+		.pause(2)
+		.exec(http(&quot;request_4&quot;)
+			.get(&quot;/actions/Catalog.action?viewCategory=&amp;categoryId=FISH&quot;)
+			.headers(headers_1))
+		.pause(1)
+		.exec(http(&quot;request_5&quot;)
+			.get(&quot;/actions/Catalog.action?viewProduct=&amp;productId=FI-FW-01&quot;)
+			.headers(headers_1))
+		.pause(1)
+		.exec(http(&quot;request_6&quot;)
+			.get(&quot;/actions/Catalog.action?viewCategory=&amp;categoryId=REPTILES&quot;)
+			.headers(headers_1))
+		.pause(1)
+		.exec(http(&quot;request_7&quot;)
+			.get(&quot;/actions/Catalog.action?viewProduct=&amp;productId=RP-LI-02&quot;)
+			.headers(headers_1))
+		.pause(2)
+		.exec(http(&quot;request_8&quot;)
+			.get(&quot;/actions/Catalog.action?viewItem=&amp;itemId=EST-13&quot;)
+			.headers(headers_1))
+		.pause(2)
+		.exec(http(&quot;request_9&quot;)
+			.get(&quot;/actions/Cart.action?addItemToCart=&amp;workingItemId=EST-13&quot;)
+			.headers(headers_1))
+		.pause(2)
+		.exec(http(&quot;request_10&quot;)
+			.post(&quot;/actions/Cart.action&quot;)
+			.headers(headers_3)
+			.formParam(&quot;EST-13&quot;, &quot;1&quot;)
+			.formParam(&quot;updateCartQuantities&quot;, &quot;Update Cart&quot;)
+			.formParam(&quot;_sourcePage&quot;, &quot;lO0hhlBQwMTUTxWdy7RxWyJUMHz7T3To36GYjL_8j7vDK0Ih2A_VZk6MP6uREzAICl-qVveBNy6exYf3CDKulsma81j2WXjz&quot;)
+			.formParam(&quot;__fp&quot;, &quot;YDrH07KQKoJ6nTKRNV0XH2EkuDKLbbGQaL0R2HcM3BMTCzgIae2YsbntWzI2zpMN&quot;)
+			.resources(http(&quot;request_11&quot;)
+			.get(&quot;/actions/Order.action?newOrderForm=&quot;)
+			.headers(headers_1)))
+		.pause(1)
+		.exec(http(&quot;request_12&quot;)
+			.post(&quot;/actions/Order.action&quot;)
+			.headers(headers_3)
+			.formParam(&quot;order.cardType&quot;, &quot;Visa&quot;)
+			.formParam(&quot;order.creditCard&quot;, &quot;999 9999 9999 9999&quot;)
+			.formParam(&quot;order.expiryDate&quot;, &quot;12/03&quot;)
+			.formParam(&quot;order.billToFirstName&quot;, &quot;John&quot;)
+			.formParam(&quot;order.billToLastName&quot;, &quot;Pool&quot;)
+			.formParam(&quot;order.billAddress1&quot;, &quot;01234 Rose Ave&quot;)
+			.formParam(&quot;order.billAddress2&quot;, &quot;Unit 6&quot;)
+			.formParam(&quot;order.billCity&quot;, &quot;Santa Barbara&quot;)
+			.formParam(&quot;order.billState&quot;, &quot;CA&quot;)
+			.formParam(&quot;order.billZip&quot;, &quot;90066&quot;)
+			.formParam(&quot;order.billCountry&quot;, &quot;USA&quot;)
+			.formParam(&quot;newOrder&quot;, &quot;Continue&quot;)
+			.formParam(&quot;_sourcePage&quot;, &quot;7X-gLslMAaT4fw2QA-qWf_OLwmEm21tSFMEcqL3xQ1sgL52k0V3teUlOGLlp-qTNTLynYe6pCEPEzmLRZu6HxUMdNdvcrEvyIOPYwzEHCbU=&quot;)
+			.formParam(&quot;__fp&quot;, &quot;OJa0cbS-5HObH0EzMq1d8zP5E6tZkKKnQgwO1Sl11y9AJVu8UAzw6R2h1KKpz4XsElQdU6tVx_X0ZEhIXOC3kOaKVb0p81uQ2qW6TsKh6p7iOPl_z83ocg==&quot;))
+		.pause(1)
+		.exec(http(&quot;request_13&quot;)
+			.get(&quot;/actions/Order.action?newOrder=&amp;confirmed=true&quot;)
+			.headers(headers_1))
+		.pause(2)
+		.exec(http(&quot;request_14&quot;)
+			.get(&quot;/actions/Account.action?editAccountForm=&quot;)
+			.headers(headers_1))
+		.pause(1)
+		.exec(http(&quot;request_15&quot;)
+			.get(&quot;/actions/Order.action?listOrders=&quot;)
+			.headers(headers_1))
+
+	setUp(scn.inject(atOnceUsers(1))).protocols(httpProtocol)
+}
+
+</code></pre>
+
+  </div>
+</div>
+</p>
+<h1 id="find-and-add-postget-parameters">Find and add POST/GET parameters</h1>
+<p>We immediatly noticing that some parameters has been gaven by the website and we need to retreive them to reinject them in our scenarios.<br>
+Like :<br>
+<code>jsessionid=6D5E6EF2EFBE77CC3EAB7DFCA53D3726</code><br>
+or<br>
+<code>.formParam(&quot;__fp&quot;, &quot;knMJ5sRUcFhvDut0kVxALcuyYld3Ul39yNAwRZE9Lg5FSVGg0LJ7v8D3STtJ4Qli&quot;)</code></p>
+<p>This first parameter is in fact a cookie that have been returned by the store.
+Gatling can deal directly with cookies. This code copies the JSESSIONID cookie in the session to a variable.</p>
+<pre><code>.exec(getCookieValue(CookieKey(&quot;JSESSIONID&quot;).withPath(&quot;/&quot;).saveAs(&quot;JSESSIONID&quot;)))
+</code></pre>
+<p>Then we can exploit it like that :</p>
+<pre><code class="language-scala">.exec(http(&quot;request_2&quot;)
+  .get(&quot;/actions/Account.action;jsessionid=${JSESSIONID}?signonForm=&quot;)
+  .headers(headers_1))
+</code></pre>
+<p>By using methods that are described bellow we can figure out that the <code>__fp</code> and <code>_sourcePage</code> are given by the application before submiting it.
+We can parse the previous page and store the parameter into a variable like that :</p>
+<pre><code>.exec(http(&quot;request_2&quot;)
+  .get(&quot;/actions/Account.action;jsessionid=${JSESSIONID}?signonForm=&quot;)
+  .headers(headers_1)
+  .check(regex(&quot;&quot;&quot;name=&quot;_sourcePage&quot; value=&quot;([^&quot;]+)&quot;&quot;&quot;&quot;).saveAs(&quot;_sourcePage&quot;))
+  .check(regex(&quot;&quot;&quot;name=&quot;__fp&quot; value=&quot;([^&quot;]+)&quot;&quot;&quot;&quot;).saveAs(&quot;__fp&quot;)))
+</code></pre>
+<p>And we reusing like that :</p>
+<pre><code>.exec(http(&quot;request_3&quot;)
+  .post(&quot;/actions/Account.action&quot;)
+  .headers(headers_3)
+  .formParam(&quot;username&quot;, &quot;priolix&quot;)
+  .formParam(&quot;password&quot;, &quot;qwerty&quot;)
+  .formParam(&quot;signon&quot;, &quot;Login&quot;)
+  .formParam(&quot;_sourcePage&quot;, &quot;${_sourcePage}&quot;)
+  .formParam(&quot;__fp&quot;, &quot;${__fp}&quot;))
+</code></pre>
+<p>The final code looks like this :
+<div class="expandable-section">
+  
+    <h2>
+  
+    
+    
+    
+    
+    
+    <button aria-expanded="false" data-expands="js-expandable-501ccb4cb5f6e656dba6d4939b9cfe14">
+      <span class="expandable-label">Scenario1.scala</span>
+      <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
+        <g transform="translate(0 -981.5)">
+          <rect style="stroke-width:0;fill:currentColor" ry="5" height="60" width="9.8985" y="987.36" x="30.051" class="up-strut" />
+          <rect style="stroke-width:0;fill:currentColor" ry="5" height="10" width="60" y="1012.4" x="5"/>
+        </g>
+      </svg>
+    </button>
+  
+    </h2>
+  
+  <div id="js-expandable-501ccb4cb5f6e656dba6d4939b9cfe14" hidden>
+    <pre><code class="language-scala">package priolix
+
+import scala.concurrent.duration._
+
+import io.gatling.core.Predef._
+import io.gatling.http.Predef._
+import io.gatling.jdbc.Predef._
+
+class Scenario1 extends Simulation {
+
+	val httpProtocol = http
+		.baseUrl(&quot;https://petstore.octoperf.com&quot;)
+		.inferHtmlResources(BlackList(&quot;&quot;&quot;.*\.js&quot;&quot;&quot;, &quot;&quot;&quot;.*\.css&quot;&quot;&quot;, &quot;&quot;&quot;.*\.gif&quot;&quot;&quot;, &quot;&quot;&quot;.*\.jpeg&quot;&quot;&quot;, &quot;&quot;&quot;.*\.jpg&quot;&quot;&quot;, &quot;&quot;&quot;.*\.ico&quot;&quot;&quot;, &quot;&quot;&quot;.*\.woff&quot;&quot;&quot;, &quot;&quot;&quot;.*\.woff2&quot;&quot;&quot;, &quot;&quot;&quot;.*\.(t|o)tf&quot;&quot;&quot;, &quot;&quot;&quot;.*\.png&quot;&quot;&quot;, &quot;&quot;&quot;.*detectportal\.firefox\.com.*&quot;&quot;&quot;), WhiteList())
+		.acceptHeader(&quot;text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9&quot;)
+		.acceptEncodingHeader(&quot;gzip, deflate&quot;)
+		.acceptLanguageHeader(&quot;en-US,en;q=0.9&quot;)
+		.upgradeInsecureRequestsHeader(&quot;1&quot;)
+		.userAgentHeader(&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.101 Safari/537.36&quot;)
+
+	val headers_0 = Map(
+		&quot;pragma&quot; -&gt; &quot;no-cache&quot;,
+		&quot;sec-ch-ua&quot; -&gt; &quot;&quot;&quot;Chromium&quot;;v=&quot;91&quot;, &quot; Not;A Brand&quot;;v=&quot;99&quot;&quot;&quot;,
+		&quot;sec-ch-ua-mobile&quot; -&gt; &quot;?0&quot;,
+		&quot;sec-fetch-dest&quot; -&gt; &quot;document&quot;,
+		&quot;sec-fetch-mode&quot; -&gt; &quot;navigate&quot;,
+		&quot;sec-fetch-site&quot; -&gt; &quot;none&quot;,
+		&quot;sec-fetch-user&quot; -&gt; &quot;?1&quot;)
+
+	val headers_1 = Map(
+		&quot;pragma&quot; -&gt; &quot;no-cache&quot;,
+		&quot;sec-ch-ua&quot; -&gt; &quot;&quot;&quot;Chromium&quot;;v=&quot;91&quot;, &quot; Not;A Brand&quot;;v=&quot;99&quot;&quot;&quot;,
+		&quot;sec-ch-ua-mobile&quot; -&gt; &quot;?0&quot;,
+		&quot;sec-fetch-dest&quot; -&gt; &quot;document&quot;,
+		&quot;sec-fetch-mode&quot; -&gt; &quot;navigate&quot;,
+		&quot;sec-fetch-site&quot; -&gt; &quot;same-origin&quot;,
+		&quot;sec-fetch-user&quot; -&gt; &quot;?1&quot;)
+
+	val headers_3 = Map(
+		&quot;origin&quot; -&gt; &quot;https://petstore.octoperf.com&quot;,
+		&quot;pragma&quot; -&gt; &quot;no-cache&quot;,
+		&quot;sec-ch-ua&quot; -&gt; &quot;&quot;&quot;Chromium&quot;;v=&quot;91&quot;, &quot; Not;A Brand&quot;;v=&quot;99&quot;&quot;&quot;,
+		&quot;sec-ch-ua-mobile&quot; -&gt; &quot;?0&quot;,
+		&quot;sec-fetch-dest&quot; -&gt; &quot;document&quot;,
+		&quot;sec-fetch-mode&quot; -&gt; &quot;navigate&quot;,
+		&quot;sec-fetch-site&quot; -&gt; &quot;same-origin&quot;,
+		&quot;sec-fetch-user&quot; -&gt; &quot;?1&quot;)
+
+
+
+	val scn = scenario(&quot;Scenario1&quot;)
+		.exec(http(&quot;request_0&quot;)
+			.get(&quot;/&quot;)
+			.headers(headers_0))
+		.pause(2)
+		.exec(http(&quot;request_1&quot;)
+			.get(&quot;/actions/Catalog.action&quot;)
+			.headers(headers_1))
+		.pause(3)
+		.exec(getCookieValue(CookieKey(&quot;JSESSIONID&quot;).withPath(&quot;/&quot;).saveAs(&quot;JSESSIONID&quot;)))
+		.exec(http(&quot;request_2&quot;)
+			.get(&quot;/actions/Account.action;jsessionid=${JSESSIONID}?signonForm=&quot;)
+			.headers(headers_1)
+			.check(regex(&quot;&quot;&quot;name=&quot;_sourcePage&quot; value=&quot;([^&quot;]+)&quot;&quot;&quot;&quot;).saveAs(&quot;_sourcePage&quot;))
+			.check(regex(&quot;&quot;&quot;name=&quot;__fp&quot; value=&quot;([^&quot;]+)&quot;&quot;&quot;&quot;).saveAs(&quot;__fp&quot;)))
+		.pause(6)
+		.exec(http(&quot;request_3&quot;)
+			.post(&quot;/actions/Account.action&quot;)
+			.headers(headers_3)
+			.formParam(&quot;username&quot;, &quot;priolix&quot;)
+			.formParam(&quot;password&quot;, &quot;qwerty&quot;)
+			.formParam(&quot;signon&quot;, &quot;Login&quot;)
+			.formParam(&quot;_sourcePage&quot;, &quot;${_sourcePage}&quot;)
+			.formParam(&quot;__fp&quot;, &quot;${__fp}&quot;))
+		.pause(2)
+		.exec(http(&quot;request_4&quot;)
+			.get(&quot;/actions/Catalog.action?viewCategory=&amp;categoryId=FISH&quot;)
+			.headers(headers_1))
+		.pause(1)
+		.exec(http(&quot;request_5&quot;)
+			.get(&quot;/actions/Catalog.action?viewProduct=&amp;productId=FI-FW-01&quot;)
+			.headers(headers_1))
+		.pause(1)
+		.exec(http(&quot;request_6&quot;)
+			.get(&quot;/actions/Catalog.action?viewCategory=&amp;categoryId=REPTILES&quot;)
+			.headers(headers_1))
+		.pause(1)
+		.exec(http(&quot;request_7&quot;)
+			.get(&quot;/actions/Catalog.action?viewProduct=&amp;productId=RP-LI-02&quot;)
+			.headers(headers_1))
+		.pause(2)
+		.exec(http(&quot;request_8&quot;)
+			.get(&quot;/actions/Catalog.action?viewItem=&amp;itemId=EST-13&quot;)
+			.headers(headers_1))
+		.pause(2)
+		.exec(http(&quot;request_9&quot;)
+			.get(&quot;/actions/Cart.action?addItemToCart=&amp;workingItemId=EST-13&quot;)
+			.headers(headers_1)
+			.check(regex(&quot;&quot;&quot;name=&quot;_sourcePage&quot; value=&quot;([^&quot;]+)&quot;&quot;&quot;&quot;).saveAs(&quot;_sourcePage&quot;))
+			.check(regex(&quot;&quot;&quot;name=&quot;__fp&quot; value=&quot;([^&quot;]+)&quot;&quot;&quot;&quot;).saveAs(&quot;__fp&quot;)))
+		.pause(2)
+		.exec(http(&quot;request_10&quot;)
+			.post(&quot;/actions/Cart.action&quot;)
+			.headers(headers_3)
+			.formParam(&quot;EST-13&quot;, &quot;1&quot;)
+			.formParam(&quot;updateCartQuantities&quot;, &quot;Update Cart&quot;)
+			.formParam(&quot;_sourcePage&quot;, &quot;${_sourcePage}&quot;)
+			.formParam(&quot;__fp&quot;, &quot;${__fp}&quot;)
+			.resources(http(&quot;request_11&quot;)
+			.get(&quot;/actions/Order.action?newOrderForm=&quot;)
+			.headers(headers_1))
+			.check(regex(&quot;&quot;&quot;name=&quot;_sourcePage&quot; value=&quot;([^&quot;]+)&quot;&quot;&quot;&quot;).saveAs(&quot;_sourcePage&quot;))
+			.check(regex(&quot;&quot;&quot;name=&quot;__fp&quot; value=&quot;([^&quot;]+)&quot;&quot;&quot;&quot;).saveAs(&quot;__fp&quot;)))
+		.pause(1)
+		.exec(http(&quot;request_12&quot;)
+			.post(&quot;/actions/Order.action&quot;)
+			.headers(headers_3)
+			.formParam(&quot;order.cardType&quot;, &quot;Visa&quot;)
+			.formParam(&quot;order.creditCard&quot;, &quot;999 9999 9999 9999&quot;)
+			.formParam(&quot;order.expiryDate&quot;, &quot;12/03&quot;)
+			.formParam(&quot;order.billToFirstName&quot;, &quot;John&quot;)
+			.formParam(&quot;order.billToLastName&quot;, &quot;Pool&quot;)
+			.formParam(&quot;order.billAddress1&quot;, &quot;01234 Rose Ave&quot;)
+			.formParam(&quot;order.billAddress2&quot;, &quot;Unit 6&quot;)
+			.formParam(&quot;order.billCity&quot;, &quot;Santa Barbara&quot;)
+			.formParam(&quot;order.billState&quot;, &quot;CA&quot;)
+			.formParam(&quot;order.billZip&quot;, &quot;90066&quot;)
+			.formParam(&quot;order.billCountry&quot;, &quot;USA&quot;)
+			.formParam(&quot;newOrder&quot;, &quot;Continue&quot;)
+			.formParam(&quot;_sourcePage&quot;, &quot;${_sourcePage}&quot;)
+			.formParam(&quot;__fp&quot;, &quot;${__fp}&quot;))
+		.pause(1)
+		.exec(http(&quot;request_13&quot;)
+			.get(&quot;/actions/Order.action?newOrder=&amp;confirmed=true&quot;)
+			.headers(headers_1))
+		.pause(2)
+		.exec(http(&quot;request_14&quot;)
+			.get(&quot;/actions/Account.action?editAccountForm=&quot;)
+			.headers(headers_1))
+		.pause(1)
+		.exec(http(&quot;request_15&quot;)
+			.get(&quot;/actions/Order.action?listOrders=&quot;)
+			.headers(headers_1))
+
+	setUp(scn.inject(atOnceUsers(1))).protocols(httpProtocol)
+}
+</code></pre>
+
+  </div>
+</div>
+</p>
+<h1 id="debug">Debug</h1>
+<p>In this section we gonna see how to analysein order to understand how the website works.
+The main goal is to find were parameters and variables are set in order to reuse it.</p>
+<h3 id="gatling-debuging">Gatling debuging</h3>
+<p><strong>/opt/gatling/conf/logback.xml</strong></p>
+<pre><code>&lt;!-- uncomment and set to TRACE to log all HTTP requests --&gt;
+&lt;!--&lt;logger name=&quot;io.gatling.http.engine.response&quot; level=&quot;TRACE&quot; /&gt;--&gt;
+
+&lt;!-- uncomment to log WebSocket events --&gt;
+&lt;!--&lt;logger name=&quot;io.gatling.http.action.ws.fsm&quot; level=&quot;DEBUG&quot; /&gt;--&gt;
+
+&lt;!-- uncomment to log SSE events --&gt;
+&lt;!--&lt;logger name=&quot;io.gatling.http.action.sse.fsm&quot; level=&quot;DEBUG&quot; /&gt;--&gt;
+</code></pre>
+<h3 id="network-debuging">Network debuging</h3>
+<p>If we have access to the target server and this server is behind a HTTPs proxy we can use TCPDump on it to extract sone informations.
+That can help us to find where some parameters a set and to extract them to reuse it.</p>
+<pre><code>tcpdump -i any -n -v -A port 80
+</code></pre>
+<p>We can also use tools like reverse proxy HTTP(s) such as :</p>
+<ul>
+<li><a href="https://portswigger.net/burp">Burp</a></li>
+<li><a href="https://www.zaproxy.org/">Zaproxy</a></li>
+<li><a href="https://www.charlesproxy.com/">Charles</a></li>
+</ul>
+<p>And finaly the nework analyser from your browser is also a good help.
+
+
+
+
+
+
+
+
+
+  
+
+
+<figure role="group" aria-describedby="caption-d41d8cd98f00b204e9800998ecf8427e">
+  <a href="https://blog.prioli.xyz/posts/gatling-load-testing-2/network.png" class="img-link">
+    <img src="https://blog.prioli.xyz/posts/gatling-load-testing-2/network_hu91b6597620cf72c3d6b86414c59b19c0_176092_1000x0_resize_box_2.png">
+  </a>
+  <figcaption id="caption-d41d8cd98f00b204e9800998ecf8427e">
+    
+  </figcaption>
+</figure>
+</p>
+<h1 id="merge-from-multiple-sources">Merge from multiple sources</h1>
+<p>When we launch gatling from multiple source in order to load balance the work between the injetors we might need to merge all the results into one report.
+This is how we proceed.
+Copy files from injector 1 and 2 in a same directory</p>
+<pre><code>/opt/gatling/results/merged1/# ls -lah
+total 8.0K
+drwxr-xr-x 2 root root 4.0K Feb 28 23:02 .
+drwxr-xr-x 8 root root 4.0K Feb 28 19:34 ..
+-rw-r--r-- 1 root root    0 Feb 28 23:02 1.log
+-rw-r--r-- 1 root root    0 Feb 28 23:02 2.log
+</code></pre>
+<p>Then lauch gatling report generator:</p>
+<pre><code>gatling.sh -ro merged1
+</code></pre>
+<h1 id="conclusion">Conclusion</h1>
+<p>In this blog post we have seen how to develop a more complex scenario with retrived parameters.
+In the next Gatling blog post we gonna see how to handle lists in order on loggin with many accounts and to browse and buy random articles.<br>
+Stay tunned.</p>
 
   </main>
 

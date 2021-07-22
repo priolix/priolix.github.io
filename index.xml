@@ -17,8 +17,10 @@
       <pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.prioli.xyz/posts/gatling-load-testing-2/</guid>
-      <description>    Intro In this blog post we gonna go a litlle bit futher that we went on the previous blog post on Gatling. This is why I hightly recomment you having a look on the first gatling blog post.
-Coming soon </description>
+      <description>Intro In this blog post we gonna go a litlle bit futher that we went on the previous blog post on Gatling. This is why I hightly recomment you having a read on the first gatling blog post.
+For this article we gonna use the JPetStore from octoperf : https://petstore.octoperf.com/
+And we gonna create a simple scenario that :
+ Login (with a previously created account) Browse some items Add some items to cart Place order  Record your scenario We are using the recording method that we explained in the previous blog post After recording we can generate a file that looks like this:  Scenario1.</description>
     </item>
     
     <item>
