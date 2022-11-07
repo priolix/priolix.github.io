@@ -279,7 +279,7 @@ account.json contain google credentials do not version this file.
     
     
     
-    <button aria-expanded="false" data-expands="js-expandable-575657346672c6262f5f796ff66a415f">
+    <button aria-expanded="false" data-expands="js-expandable-7f4557756ff656166a4fc39726f65262">
       <span class="expandable-label">.gitignore</span>
       <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
         <g transform="translate(0 -981.5)">
@@ -291,7 +291,7 @@ account.json contain google credentials do not version this file.
   
     </h2>
   
-  <div id="js-expandable-575657346672c6262f5f796ff66a415f" hidden>
+  <div id="js-expandable-7f4557756ff656166a4fc39726f65262" hidden>
     <pre><code class="language-bash">#Credetials
 account.json
 
@@ -317,7 +317,7 @@ terraform.tfstate*
     
     
     
-    <button aria-expanded="false" data-expands="js-expandable-2d028c0fd46fb2df418746fe7615d0bf">
+    <button aria-expanded="false" data-expands="js-expandable-26de04d080618f216dbdc7f254b4f7ff">
       <span class="expandable-label">00-variables.tfvars</span>
       <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
         <g transform="translate(0 -981.5)">
@@ -329,7 +329,7 @@ terraform.tfstate*
   
     </h2>
   
-  <div id="js-expandable-2d028c0fd46fb2df418746fe7615d0bf" hidden>
+  <div id="js-expandable-26de04d080618f216dbdc7f254b4f7ff" hidden>
     <pre><code class="language-json">gcp_project_name = &quot;spartan-studio-125417&quot;
 region = &quot;us-west1&quot;
 hugo_bucket_name = &quot;blog.prioli.xyz&quot;
@@ -356,7 +356,7 @@ Which is a great option specialy when you work as a team.<br>
     
     
     
-    <button aria-expanded="false" data-expands="js-expandable-ddbfc5183227c49253235458ba103316">
+    <button aria-expanded="false" data-expands="js-expandable-359c03813bfa12745d2d3134c22865b5">
       <span class="expandable-label">01-terraform.tf</span>
       <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
         <g transform="translate(0 -981.5)">
@@ -368,7 +368,7 @@ Which is a great option specialy when you work as a team.<br>
   
     </h2>
   
-  <div id="js-expandable-ddbfc5183227c49253235458ba103316" hidden>
+  <div id="js-expandable-359c03813bfa12745d2d3134c22865b5" hidden>
     <pre><code class="language-json">terraform {
   required_version = &quot;= 0.12.26&quot;
   required_providers {
@@ -402,7 +402,7 @@ provider &quot;google&quot; {
     
     
     
-    <button aria-expanded="false" data-expands="js-expandable-2b4074c2f424d78d807d1d2f71e403b8">
+    <button aria-expanded="false" data-expands="js-expandable-4f27b273204f8ddb7124410808e7cdd4">
       <span class="expandable-label">02-gcs.tf</span>
       <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
         <g transform="translate(0 -981.5)">
@@ -414,7 +414,7 @@ provider &quot;google&quot; {
   
     </h2>
   
-  <div id="js-expandable-2b4074c2f424d78d807d1d2f71e403b8" hidden>
+  <div id="js-expandable-4f27b273204f8ddb7124410808e7cdd4" hidden>
     <pre><code class="language-json">resource &quot;google_storage_bucket&quot; &quot;blogpriolixyz&quot; {
   name     = &quot;blog.prioli.xyz&quot;
   location = &quot;us-west1&quot;
@@ -470,7 +470,7 @@ https://cloud.google.com/storage/docs/domain-name-verification
     
     
     
-    <button aria-expanded="false" data-expands="js-expandable-6d552b95d204fe0827e65373ab912b7c">
+    <button aria-expanded="false" data-expands="js-expandable-2150752764fa873b399ee5b2dd065bc2">
       <span class="expandable-label">03-lb.tf</span>
       <svg aria-hidden="true" focusable="false" viewBox="0 0 70.866142 70.866141">
         <g transform="translate(0 -981.5)">
@@ -482,7 +482,7 @@ https://cloud.google.com/storage/docs/domain-name-verification
   
     </h2>
   
-  <div id="js-expandable-6d552b95d204fe0827e65373ab912b7c" hidden>
+  <div id="js-expandable-2150752764fa873b399ee5b2dd065bc2" hidden>
     <pre><code class="language-json">resource &quot;google_compute_backend_bucket&quot; &quot;blogpriolixyz&quot; {
   name        = &quot;blogpriolixyz&quot;
   bucket_name = google_storage_bucket.blogpriolixyz.name
